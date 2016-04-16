@@ -1,0 +1,126 @@
+html{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #e1f0f7;
+}
+
+p,a{
+	font-family: "Tahoma";
+}
+
+#header{
+	width: 100%;
+	height:8%;
+	background-color: #5178A3;
+}
+
+#header p{
+	float: left;
+	color: white;
+}
+
+#header #firstP{
+	line-height: 9px;
+	font-size: 22px;
+	margin-left: 1%;
+}
+
+#header #secondP{
+	margin-left: 20%;
+}
+
+#header #logOut{
+	float: right;
+	margin-right: 10px;
+	margin-top: 13px;
+	-webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+#header #logOut a{
+	color: white;
+	margin-right: 10px;
+}
+
+#content{
+	clear:both;
+	width: 100%;
+	height: 92%;
+	min-height: 92%;
+}
+
+#content #nav{
+	width: 25%;
+	float: left;
+	height: 92%;
+	min-height: 92%;
+	background-color: #e1f0f7;
+}
+
+#content #workplace{
+	width: 74%;
+	float: left;
+	height: 92%;
+	min-height: 92%;
+	height: auto !important;
+	background-color: #F8FBFB;
+}
+
+#hfooter{
+	clear: both;
+    height: 49px;
+}
+
+#footer{
+	clear: both;
+	width: 100%;
+	background-color: #E7EBED;
+	height: 49px;
+	margin-top: -49px;
+	text-align: center;
+}
+
+#footer span{
+	display: inline-block;
+	margin-top: 15px;
+	text-align: center;
+	font-size: 18px;
+}
+
+table{
+	margin-top: 20px;
+	border-collapse: collapse;
+	width: 90%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+th, td{
+	padding: 3px;
+    border: 1px solid black;
+}
+
+th{
+	background: #b0e0e6;
+}
+
+#navPages{
+	text-align: center;
+}
+
+.noStyle{
+	color: black;
+	text-decoration: none;
+}
+
+

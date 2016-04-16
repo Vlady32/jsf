@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      <h:head>
+      	<title>#{msgs.main_title}</title>
+      	<h:outputStylesheet library="css" name="mainStyle.css"/>
+      </h:head>
+      <h:body>
+      	<h:panelGroup layout="block" id="header">
+      		<p id="firstP">#{msgs.main_name_phonebook}</p>
+      		<p id="secondP">
+      			<h:outputFormat value="#{msgs.main_welcome}">
+      				<f:param value="#{sessionInformation.userName}"/>
+      			</h:outputFormat>
+      		</p>
+      		<h:form id="logOut"><h:commandLink action="#{main.logOut}" value="#{msgs.main_exit}"/></h:form>
+      	</h:panelGroup>
+      	<h:panelGroup layout="block" id="content">
+      		<h:panelGroup layout="block" id="nav">
+      			<h:form id="itemsMenu">
+      				<ui:repeat var="item" value="#{main.listItemsMenu}">
+      					<p><h:commandLink value="#{item}" action="#{main.determineAction}">
+      						<f:param name="link" value="#{item}"/>
+      						<f:ajax render=":workplace"/>
+      					</h:commandLink></p>
+      				</ui:repeat>
+				</h:form>
+      		</h:panelGroup>
+      		<h:panelGroup id="workplace" layout="block">
+  				<h:panelGroup id="viewIn" rendered="#{main.linkPage eq 'view.xhtml'}" layout="block">
+    					<ui:include src="view.xhtml"/> 
+				</h:panelGroup>
+				<h:panelGroup id="addIn" rendered="#{main.linkPage eq 'add.xhtml'}" layout="block">
+    					<ui:include src="add.xhtml"/> 
+				</h:panelGroup>
+				<h:panelGroup id="controlIn" rendered="#{main.linkPage eq 'control.xhtml'}" layout="block">
+    					<ui:include src="control.xhtml"/> 
+				</h:panelGroup>
+				<h:panelGroup id="editIn" rendered="#{main.linkPage eq 'edit.xhtml'}" layout="block">
+    					<ui:include src="edit.xhtml"/> 
+				</h:panelGroup>
+				<h:panelGroup id="searchIn" rendered="#{main.linkPage eq 'search.xhtml'}" layout="block">
+    					<ui:include src="search.xhtml"/> 
+				</h:panelGroup>
+			</h:panelGroup>
+      		<h:panelGroup layout="block" id="hfooter"></h:panelGroup>
+      	</h:panelGroup>
+      	<h:panelGroup layout="block" id="footer">
+      		<span><h:outputText value="#{msgs.main_footer} &#169; 2016"/></span>
+      	</h:panelGroup>
+      </h:body>
+</html>
+

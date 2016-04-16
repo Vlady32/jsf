@@ -1,0 +1,36 @@
+<ui:composition 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:form><p><h:messages style="color:red" /></p></h:form>
+    <h:dataTable binding="#{table}" value="#{viewPage.listRecords}" var="record">
+    	<h:column>
+    		<f:facet name="header">#{msgs.view_header_number}</f:facet>
+    		#{(viewPage.currentPage - 1)*30 + table.rowIndex + 1}
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">#{msgs.view_header_full_name}</f:facet>
+    		#{record.fullName}
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">#{msgs.view_header_address}</f:facet>
+    		#{record.address}
+    	</h:column>
+    	<h:column>
+    		<f:facet name="header">#{msgs.view_header_telephone}</f:facet>
+    		#{record.phoneNumber}
+    	</h:column>
+    </h:dataTable>
+    <h:panelGroup layout="block" id="navPages"> 
+    	<h:form>
+    		<ui:repeat var="i" value="#{viewPage.valuesPages}">
+    			<h:commandLink styleClass="#{viewPage.currentPage eq i ? 'noStyle' : ''}" value="#{i}" action="#{viewPage.update}">
+    				<f:param name="page" value="#{i}"/>
+    			</h:commandLink>
+    			<h:outputText value=" "/>
+			</ui:repeat>
+		</h:form>
+    </h:panelGroup>
+</ui:composition>
