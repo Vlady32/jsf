@@ -123,4 +123,22 @@ th{
 	text-decoration: none;
 }
 
+#popupWindow_container div{
+	font-family: "Tahoma";
+	font-size: 15px;
+}
+
+#popupWindow_content #imageProfile{
+	float: left;
+	margin-right: 20px;
+}
+
+#popupWindow_content form{
+	float: left;
+}
+
+.bold{
+	font-weight: bold;
+}
+
 

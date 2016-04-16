@@ -1,10 +1,18 @@
 package by.iba.gomel;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.ibm.ws.util.Base64;
 
 /**
  * This class contains fields and methods for working with records.
@@ -110,6 +118,29 @@ public class Record implements Serializable {
 
     public void setBirthDate(final Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    private byte[] getByteFile(final String pathToFile) {
+        FileInputStream fileInputStream = null;
+        final File file = new File(pathToFile);
+        final byte[] bFile = new byte[(int) file.length()];
+        try {
+            fileInputStream = new FileInputStream(file);
+            fileInputStream.read(bFile);
+            fileInputStream.close();
+        } catch (final IOException e) {
+            Record.LOGGER.error(Constants.IO_EXCEPTION, e);
+        }
+        return bFile;
+    }
+
+    public String getBase64Code() {
+        if ((pathFile == null) || pathFile.isEmpty()) {
+            pathFile = ((ServletContext) FacesContext.getCurrentInstance().getExternalContext()
+                    .getContext()).getRealPath(Constants.DEFAULT_DEFAULT_SEPARATOR)
+                    + Constants.DEFAULT_PATH_IMAGE;
+        }
+        return Base64.encode(getByteFile(pathFile));
     }
 
     public String getPathFile() {

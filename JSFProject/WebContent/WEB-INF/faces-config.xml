@@ -35,4 +35,12 @@
       <redirect/>
     </navigation-case>
   </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/jsf/main.xhtml</from-view-id>
+    <navigation-case>
+      <from-outcome>successProfile</from-outcome>
+      <to-view-id>/jsf/profile.xhtml</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
 </faces-config>

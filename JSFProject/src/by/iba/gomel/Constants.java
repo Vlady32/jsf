@@ -33,6 +33,8 @@ public class Constants {
     public static final String FILE_MESSAGES_PROPERTY                    = "resources.messages";
     public static final String FILE_REQUESTS_PROPERTY                    = "resources.requests_db2";
     public static final String FILE_CONFIG_PROPERTY                      = "resources.config";
+    public static final String DEFAULT_PATH_IMAGE                        = "/files/no_picture.png";
+    public static final String DEFAULT_DEFAULT_SEPARATOR                 = "/";
 
     public static final String PROPERTY_PATH_LOGIN_PAGE                  = "path.page.login";
     public static final String PROPERTY_PATH_MAIN_PAGE                   = "path.page.main";
@@ -43,11 +45,13 @@ public class Constants {
 
     public static final String NAMING_EXCEPTION                          = "NamingException";
     public static final String EXCEPTION_SQL                             = "SQLException";
+    public static final String IO_EXCEPTION                              = "IOException";
 
     public static final String LOGIC_NAME_DB                             = "java:comp/env/jdbc/JSP";
     public static final String USER_DB2                                  = "Vlady";
 
     public static final String RESULT_SUCCESS                            = "success";
+    public static final String RESULT_SUCCESS_PROFILE                    = "successProfile";
     public static final String RESULT_FAIL                               = "fail";
 
     public static final String MESSAGE_LOGIN_ERROR                       = "message.loginerror";

@@ -3,12 +3,19 @@
       xmlns:f="http://java.sun.com/jsf/core"      
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich">
     <h:form><p><h:messages style="color:red" /></p></h:form>
     <h:dataTable binding="#{table}" value="#{viewPage.listRecords}" var="record">
     	<h:column>
     		<f:facet name="header">#{msgs.view_header_number}</f:facet>
-    		#{(viewPage.currentPage - 1)*30 + table.rowIndex + 1}
+    		<h:form>
+    			<h:commandLink value="#{(viewPage.currentPage - 1)*30 + table.rowIndex + 1}">       
+    				<a4j:ajax render="popupWindow" oncomplete="#{rich:component('popupWindow')}.show()"/>
+    				<f:setPropertyActionListener target="#{profilePage.record}" value="#{record}"/>
+				</h:commandLink>
+    		</h:form>
     	</h:column>
     	<h:column>
     		<f:facet name="header">#{msgs.view_header_full_name}</f:facet>
@@ -33,4 +40,28 @@
 			</ui:repeat>
 		</h:form>
     </h:panelGroup>
+    <rich:popupPanel autosized="true" id="popupWindow" modal="true" onmaskclick="#{rich:component('popupWindow')}.hide()">
+  		<f:facet name="header">
+  			<h:outputText styleClass="bold" value="#{msgs.profile_header}"/>
+    		<h:outputText value="#{profilePage.record.fullName}"/>
+  		</f:facet>
+  		<f:facet name="controls">
+  			<h:outputText value="X" onclick="#{rich:component('popupWindow')}.hide(); return false;" style="cursor:pointer; font-size:16px"/>
+        </f:facet>
+        <p id="imageProfile"><h:graphicImage url="data:image/jpg;base64,${profilePage.record.getBase64Code()}" alt="${profilePage.record.fullName}" style="width: 150px; height: 200px;"/></p>
+  		<h:form>
+  			<p><h:outputText styleClass="bold" value="#{msgs.profile_full_name}"/>
+    		<h:outputText value="#{profilePage.record.fullName}"/></p>
+  			<p><h:outputText styleClass="bold" value="#{msgs.profile_address}"/>
+    		<h:outputText value="#{profilePage.record.address}"/></p>
+  			<p><h:outputText styleClass="bold" value="#{msgs.profile_telephone}"/>
+    		<h:outputText value="#{profilePage.record.phoneNumber}"/></p>
+  			<p><h:outputText styleClass="bold" value="#{msgs.profile_date_creation}"/>
+    		<h:outputText value="#{profilePage.record.creationDate}"/></p>
+  			<p><h:outputText styleClass="bold" value="#{msgs.profile_mail}"/>
+    		<h:outputText value="#{profilePage.record.mail}"/></p>
+  			<p><h:outputText styleClass="bold" value="#{msgs.profile_birthdate}"/>
+    		<h:outputText value="#{profilePage.record.birthDate}"/></p>
+  		</h:form>     
+	</rich:popupPanel>
 </ui:composition>
