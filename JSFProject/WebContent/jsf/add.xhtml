@@ -1,7 +1,21 @@
 <ui:composition 
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <h2>add</h2>
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"      
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">
+    <h:form enctype="multipart/form-data">
+    	<p>#{msgs.add_header}</p>
+      	<p>#{msgs.profile_full_name}<br/><h:inputText value="#{addPage.record.fullName}" /></p>
+      	<p>#{msgs.profile_address}<br/><h:inputText value="#{addPage.record.address}" /></p>
+      	<p>#{msgs.profile_telephone}<br/><h:inputText value="#{addPage.record.phoneNumber}" /></p>
+      	<p>#{msgs.profile_mail}<br/><h:inputText value="#{addPage.record.mail}" /></p>
+      	<p>#{msgs.profile_birthdate}<br/><p:calendar pattern="yyyy-MM-dd" value="#{addPage.record.birthDate}"/></p>
+      	<p>#{msgs.profile_birthdate}<rich:fileUpload fileUploadListener="#{addPage.uploadedFile}" /></p>
+      	<p><h:commandButton value="#{msgs.add_button}" action="#{addPage.upload}"/> </p>
+      	<p><h:messages style="color:red" /></p>
+    </h:form>
+    
 </ui:composition>

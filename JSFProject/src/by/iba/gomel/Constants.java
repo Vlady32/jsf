@@ -35,6 +35,7 @@ public class Constants {
     public static final String FILE_CONFIG_PROPERTY                      = "resources.config";
     public static final String DEFAULT_PATH_IMAGE                        = "/files/no_picture.png";
     public static final String DEFAULT_DEFAULT_SEPARATOR                 = "/";
+    public static final String PATH_VALUE_PHOTOS                         = "C:\\photos";
 
     public static final String PROPERTY_PATH_LOGIN_PAGE                  = "path.page.login";
     public static final String PROPERTY_PATH_MAIN_PAGE                   = "path.page.main";
