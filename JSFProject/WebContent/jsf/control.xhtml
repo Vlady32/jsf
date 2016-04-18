@@ -1,7 +1,33 @@
 <ui:composition 
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <h2>control</h2>
+    xmlns:f="http://java.sun.com/jsf/core"      
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:outputScript library="js" name="control_edit.js" target="head"/>
+    <h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+    <h:outputScript library="js" name="jquery-2.2.2.min.js" target="head"/>
+    <h:form><p><h:messages style="color:red" /></p></h:form>
+    <table id="controlTable">
+    	<caption>#{msgs.control_caption}</caption>
+    	<tr> 
+			<th>#{msgs.view_header_number}</th>
+			<th>#{msgs.control_header_name}</th>
+			<th>#{msgs.control_header_type}</th>
+			<th class="withoutBorder"></th>
+		</tr>
+    	<ui:repeat var="userControl" value="#{controlPage.listUsers}" varStatus="status">
+    		<tr>
+    			<td>#{status.index + 1}</td>
+				<td>#{userControl.userName}</td>
+				<td>#{userControl.type}</td>
+				<td class="withoutBorder tools hidden">
+					<h:form>
+						<h:commandLink style="text-decoration: none" action="#{deleteUserPage.deleteUser(userControl.userName)}" onclick="if (! confirm('#{msgs.delete_confirm}')) return false">      
+    						<i class="fa fa-times removeIcon"></i>
+						</h:commandLink>
+    				</h:form>
+    			</td>
+    		</tr>
+    	</ui:repeat>
+    </table>
 </ui:composition>

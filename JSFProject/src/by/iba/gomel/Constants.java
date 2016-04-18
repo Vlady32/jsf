@@ -5,6 +5,8 @@ public class Constants {
     public static final int    INDEX_COLUMN_TYPE_SQL                     = 1;
     public static final int    INDEX_COLUMN_FULLNAME_SQL                 = 1;
     public static final int    INDEX_COLUMN_ITEM_VIEW_SQL                = 1;
+    public static final int    INDEX_COLUMN_NAME_USER_SQL                = 1;
+    public static final int    INDEX_COLUMN_TYPE_USER_CONTROL_SQL        = 2;
     public static final int    INDEX_COLUMN_ADDRESS_SQL                  = 2;
     public static final int    INDEX_COLUMN_PASSWORD_SQL                 = 2;
     public static final int    INDEX_COLUMN_FULLNAME_VIEW_SQL            = 2;
@@ -23,6 +25,7 @@ public class Constants {
     public static final int    DEFAULT_PAGE                              = 1;
     public static final int    NUMBER_ONE                                = 1;
     public static final int    DEFAULT_INDEX_ITEM                        = -1;
+    public static final int    ONE_KB                                    = 1024;
     public static final double DEFAULT_QUALITY_RECORDS_AND_USERS_ON_PAGE = 30.0;
 
     public static final String ATTRIBUTE_NAME_LOGIN                      = "login";
@@ -34,8 +37,10 @@ public class Constants {
     public static final String FILE_REQUESTS_PROPERTY                    = "resources.requests_db2";
     public static final String FILE_CONFIG_PROPERTY                      = "resources.config";
     public static final String DEFAULT_PATH_IMAGE                        = "/files/no_picture.png";
+    public static final String DEFAULT_PATH_NO_IMAGE                     = "C:\\photos\\no_picture.png";
     public static final String DEFAULT_DEFAULT_SEPARATOR                 = "/";
     public static final String PATH_VALUE_PHOTOS                         = "C:\\photos";
+    public static final String DEFAULT_ENCODING                          = "UTF-8";
 
     public static final String PROPERTY_PATH_LOGIN_PAGE                  = "path.page.login";
     public static final String PROPERTY_PATH_MAIN_PAGE                   = "path.page.main";
@@ -43,10 +48,16 @@ public class Constants {
     public static final String PROPERTY_REGISTERED_USER                  = "registeredUser";
     public static final String PROPERTY_GET_ALL_RECORDS                  = "getAllRecords";
     public static final String PROPERTY_GET_QUALITY_RECORDS              = "getQualityRecords";
+    public static final String PROPERTY_ADD_RECORD                       = "addRecord";
+    public static final String PROPERTY_CHANGE_RECORD                    = "changeRecord";
+    public static final String PROPERTY_DELETE_RECORD                    = "deleteRecord";
+    public static final String PROPERTY_GET_USERS                        = "getUsers";
+    public static final String PROPERTY_DELETE_USER                      = "deleteUser";
 
     public static final String NAMING_EXCEPTION                          = "NamingException";
     public static final String EXCEPTION_SQL                             = "SQLException";
     public static final String IO_EXCEPTION                              = "IOException";
+    public static final String FILE_NOT_FOUND_EXCEPTION                  = "FileNotFoundException";
 
     public static final String LOGIC_NAME_DB                             = "java:comp/env/jdbc/JSP";
     public static final String USER_DB2                                  = "Vlady";

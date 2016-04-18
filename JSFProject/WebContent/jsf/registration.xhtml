@@ -10,9 +10,9 @@
       <h:body>
       	<h:form>
       		<p>#{msgs.reg_header}</p>
-      		<p>#{msgs.reg_login}:<h:inputText value="#{reg.login}"/></p>
-      		<p>#{msgs.reg_password}:<h:inputSecret value="#{reg.password}"/></p>
-      		<p>#{msgs.reg_conf_pass}:<h:inputSecret value="#{reg.confirmedPassword}"/></p>
+      		<p>#{msgs.reg_login}:<h:inputText required="true" value="#{reg.login}"/></p>
+      		<p>#{msgs.reg_password}:<h:inputSecret required="true" value="#{reg.password}"/></p>
+      		<p>#{msgs.reg_conf_pass}:<h:inputSecret required="true" value="#{reg.confirmedPassword}"/></p>
       		<p><h:commandButton value="#{msgs.reg_button_create}" action="#{reg.registeredUser}"/></p>
       		<p><h:messages style="color:red" /></p>
       	</h:form>

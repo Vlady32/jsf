@@ -28,7 +28,7 @@ public class SessionBean implements Serializable {
         }
     }
 
-    public static Locale getCurrentLocale() {
+    public Locale getCurrentLocale() {
         final FacesContext context = FacesContext.getCurrentInstance();
         final Locale currentLocale = context.getExternalContext().getRequestLocale();
         return currentLocale;
@@ -59,7 +59,7 @@ public class SessionBean implements Serializable {
 
     public static void addErrorMessage(final String propertyMessage) {
         final FacesContext context = FacesContext.getCurrentInstance();
-        final Locale currentLocale = SessionBean.getCurrentLocale();
+        final Locale currentLocale = new SessionBean().getCurrentLocale();
         final MessageManager messageManager = new MessageManager(currentLocale);
         final String messageError = messageManager.getProperty(propertyMessage);
         context.addMessage(null, new FacesMessage(messageError));

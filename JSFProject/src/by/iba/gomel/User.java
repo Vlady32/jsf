@@ -1,12 +1,15 @@
 package by.iba.gomel;
 
+import java.io.Serializable;
+
 /**
  * This class contains fields and methods for working with user.
  */
-public class User {
+public class User implements Serializable {
 
-    private String userName;
-    private String type;
+    private static final long serialVersionUID = 1L;
+    private String            userName;
+    private String            type;
 
     /**
      * 

@@ -12,7 +12,6 @@ import by.iba.gomel.Record;
 public class ProfileBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     private Record            record;
 
     public Record getRecord() {

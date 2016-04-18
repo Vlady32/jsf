@@ -1,7 +1,75 @@
 <ui:composition 
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <h2>edit</h2>
+    xmlns:f="http://java.sun.com/jsf/core"      
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:p="http://primefaces.org/ui">
+    <h:outputScript library="js" name="control_edit.js" target="head"/>
+    <h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+    <h:outputScript library="js" name="jquery-2.2.2.min.js" target="head"/>
+    <h:form><p><h:messages style="color:red" /></p></h:form>
+    <table>
+    	<tr> 
+			<th>#{msgs.view_header_number}</th>
+			<th>#{msgs.view_header_full_name}</th>
+			<th>#{msgs.view_header_address}</th>
+			<th>#{msgs.view_header_telephone}</th>
+			<th class="withoutBorder"></th>
+		</tr>
+    	<ui:repeat var="recordEdit" value="#{editPage.viewBean.listRecords}" varStatus="status">
+    		<tr class="editTr">
+    			<td>#{(editPage.viewBean.currentPage - 1)*30 + status.index + 1}</td>
+				<td>#{recordEdit.fullName}</td>
+				<td>#{recordEdit.address}</td>
+				<td>#{recordEdit.phoneNumber}</td>
+				<td class="withoutBorder tools hidden">
+					<h:form>
+    					<h:commandLink style="text-decoration: none">      
+    						<i class="fa fa-pencil-square-o editIcon"></i> 
+    						<a4j:ajax render="popupWindowEdit" oncomplete="#{rich:component('popupWindowEdit')}.show()"/>
+    						<f:setPropertyActionListener target="#{editPage.changedRecord}" value="#{recordEdit}"/>
+						</h:commandLink>
+						<h:commandLink style="text-decoration: none" action="#{deletePage.deleteRecord(recordEdit.item)}" onclick="if (! confirm('#{msgs.edit_confirm}')) return false">      
+    						<i class="fa fa-times removeIcon"></i>
+						</h:commandLink>
+    				</h:form>
+    			</td>
+    		</tr>
+    	</ui:repeat>
+    </table>
+    <h:panelGroup layout="block" id="navPagesEdit"> 
+    	<h:form>
+    		<ui:repeat var="i" value="#{editPage.viewBean.valuesPages}">
+    			<h:commandLink styleClass="#{editPage.viewBean.currentPage eq i ? 'noStyle' : ''}" value="#{i}" action="#{editPage.viewBean.update}">
+    				<f:param name="page" value="#{i}"/>
+    			</h:commandLink>
+    			<h:outputText value=" "/>
+			</ui:repeat>
+		</h:form>
+    </h:panelGroup>
+    <rich:popupPanel autosized="true" id="popupWindowEdit" modal="true" onmaskclick="#{rich:component('popupWindowEdit')}.hide()">
+  		<f:facet name="header">
+  			<h:outputText styleClass="bold" value="#{msgs.profile_header}"/>
+    		<h:outputText value="#{editPage.changedRecord.fullName}"/>
+  		</f:facet>
+  		<f:facet name="controls">
+  			<h:outputText value="X" onclick="#{rich:component('popupWindowEdit')}.hide(); return false;" style="cursor:pointer; font-size:16px"/>
+        </f:facet>
+        <p id="imageProfile"><h:graphicImage url="data:image/jpg;base64,${editPage.changedRecord.getBase64Code()}" alt="${editPage.changedRecord.fullName}" style="width: 150px; height: 200px;"/></p>
+  		<h:form>
+  			<p><h:outputText styleClass="bold" value="#{msgs.profile_full_name}"/>
+    		<h:inputText value="#{editPage.changedRecord.fullName}"/></p>
+  			<p><h:outputText styleClass="bold" value="#{msgs.profile_address}"/>
+    		<h:inputText value="#{editPage.changedRecord.address}"/></p>
+  			<p><h:outputText styleClass="bold" value="#{msgs.profile_telephone}"/>
+    		<h:inputText value="#{editPage.changedRecord.phoneNumber}"/></p>
+  			<p><h:outputText styleClass="bold" value="#{msgs.profile_mail}"/>
+    		<h:inputText value="#{editPage.changedRecord.mail}"/></p>
+  			<p><h:outputText styleClass="bold" value="#{msgs.profile_birthdate}"/>
+  			<rich:calendar required="true" cellWidth="24px" cellHeight="22px" popupStyle="width:200px" locale="#{sessionInformation.currentLocale}" datePattern="yyyy-MM-dd" value="#{editPage.changedRecord.birthDate}"/></p>
+  			<p><h:commandButton value="#{msgs.edit_button}" action="#{editPage.changeRecord}"/> </p>
+  		</h:form>     
+	</rich:popupPanel>
 </ui:composition>

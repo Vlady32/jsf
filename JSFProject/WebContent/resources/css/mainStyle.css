@@ -97,6 +97,14 @@ p,a{
 	font-size: 18px;
 }
 
+#controlTable{
+	margin-top: 20px;
+	border-collapse: collapse;
+	width: 60%;
+	text-align: center;
+	margin: 0 auto;
+}
+
 table{
 	margin-top: 20px;
 	border-collapse: collapse;
@@ -114,7 +122,7 @@ th{
 	background: #b0e0e6;
 }
 
-#navPages{
+#navPages,#navPagesEdit{
 	text-align: center;
 }
 
@@ -140,5 +148,27 @@ th{
 .bold{
 	font-weight: bold;
 }
+
+.editIcon{
+	color: blue;
+}
+
+.removeIcon{
+	color: red;
+}
+
+.editIcon:hover, .removeIcon:hover {
+	cursor: pointer;
+}
+
+.withoutBorder{
+	border: none;
+	background: #F8FBFB;
+}
+
+.hidden{
+	visibility: hidden;
+}
+
 
 

@@ -3,19 +3,17 @@
     xmlns:f="http://java.sun.com/jsf/core"      
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui"
     xmlns:a4j="http://richfaces.org/a4j"
     xmlns:rich="http://richfaces.org/rich">
-    <h:form enctype="multipart/form-data">
+    <h:form>
     	<p>#{msgs.add_header}</p>
-      	<p>#{msgs.profile_full_name}<br/><h:inputText value="#{addPage.record.fullName}" /></p>
-      	<p>#{msgs.profile_address}<br/><h:inputText value="#{addPage.record.address}" /></p>
-      	<p>#{msgs.profile_telephone}<br/><h:inputText value="#{addPage.record.phoneNumber}" /></p>
+      	<p>#{msgs.profile_full_name}<br/><h:inputText required="true" value="#{addPage.record.fullName}" /></p>
+      	<p>#{msgs.profile_address}<br/><h:inputText required="true" value="#{addPage.record.address}" /></p>
+      	<p>#{msgs.profile_telephone}<br/><h:inputText required="true" value="#{addPage.record.phoneNumber}" /></p>
       	<p>#{msgs.profile_mail}<br/><h:inputText value="#{addPage.record.mail}" /></p>
-      	<p>#{msgs.profile_birthdate}<br/><p:calendar pattern="yyyy-MM-dd" value="#{addPage.record.birthDate}"/></p>
-      	<p>#{msgs.profile_birthdate}<rich:fileUpload fileUploadListener="#{addPage.uploadedFile}" /></p>
-      	<p><h:commandButton value="#{msgs.add_button}" action="#{addPage.upload}"/> </p>
+      	<p>#{msgs.profile_birthdate}<br/><rich:calendar required="true" cellWidth="24px" cellHeight="22px" popupStyle="width:200px" locale="#{sessionInformation.currentLocale}" datePattern="yyyy-MM-dd" value="#{addPage.record.birthDate}"/></p>
+      	<p>#{msgs.profile_photo}<rich:fileUpload immediateUpload="true" id="fileUploadId"  fileUploadListener="#{addPage.listener}" listHeight="100%" acceptedTypes="jpg, gif, png, bmp" maxFilesQuantity="1" maxFileSize="2000000"/></p>
+      	<p><h:commandButton value="#{msgs.add_button}" action="#{addPage.addRecord}"/> </p>
       	<p><h:messages style="color:red" /></p>
     </h:form>
-    
 </ui:composition>

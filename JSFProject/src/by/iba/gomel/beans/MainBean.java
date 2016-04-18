@@ -37,7 +37,7 @@ public class MainBean implements Serializable {
 
     private void initList() {
         listItemsMenu = new ArrayList<String>();
-        final Locale currentLocale = SessionBean.getCurrentLocale();
+        final Locale currentLocale = new SessionBean().getCurrentLocale();
         final MessageManager messageManager = new MessageManager(currentLocale);
         if (SessionBean.getUserType().equals(Constants.TYPE_ADMIN)) {
             listItemsMenu.add(messageManager.getProperty(Constants.MESSAGE_MENU_VIEWING));
@@ -60,7 +60,7 @@ public class MainBean implements Serializable {
     }
 
     public void determineAction() {
-        final Locale currentLocale = SessionBean.getCurrentLocale();
+        final Locale currentLocale = new SessionBean().getCurrentLocale();
         final MessageManager messageManager = new MessageManager(currentLocale);
         final Map<String, String> mapParameters = FacesContext.getCurrentInstance()
                 .getExternalContext().getRequestParameterMap();

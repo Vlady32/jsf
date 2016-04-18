@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.faces.context.FacesContext;
-import javax.servlet.ServletContext;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -136,9 +133,7 @@ public class Record implements Serializable {
 
     public String getBase64Code() {
         if ((pathFile == null) || pathFile.isEmpty()) {
-            pathFile = ((ServletContext) FacesContext.getCurrentInstance().getExternalContext()
-                    .getContext()).getRealPath(Constants.DEFAULT_DEFAULT_SEPARATOR)
-                    + Constants.DEFAULT_PATH_IMAGE;
+            pathFile = Constants.DEFAULT_PATH_NO_IMAGE;
         }
         return Base64.encode(getByteFile(pathFile));
     }
@@ -149,6 +144,13 @@ public class Record implements Serializable {
 
     public void setPathFile(final String pathFile) {
         this.pathFile = pathFile;
+    }
+
+    @Override
+    public String toString() {
+        return "Record [item=" + item + ", fullName=" + fullName + ", address=" + address
+                + ", phoneNumber=" + phoneNumber + ", creationDate=" + creationDate + ", mail="
+                + mail + ", birthDate=" + birthDate + ", pathFile=" + pathFile + "]";
     }
 
 }
