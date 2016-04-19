@@ -33,6 +33,12 @@ public class ViewBean implements Serializable, IDB2 {
     private int                 currentPage      = Constants.DEFAULT_PAGE;
     private int                 qualityPages;
 
+    public void clear() {
+        listRecords = null;
+        currentPage = Constants.DEFAULT_PAGE;
+        qualityPages = 0;
+    }
+
     public void update() {
         final Map<String, String> mapParameters = FacesContext.getCurrentInstance()
                 .getExternalContext().getRequestParameterMap();

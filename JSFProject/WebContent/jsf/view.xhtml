@@ -1,11 +1,10 @@
 <ui:composition 
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"      
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:a4j="http://richfaces.org/a4j"
-      xmlns:rich="http://richfaces.org/rich">
-    <h:form><p><h:messages style="color:red" /></p></h:form>
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"      
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:rich="http://richfaces.org/rich">  
     <h:dataTable binding="#{table}" value="#{viewPage.listRecords}" var="record">
     	<h:column>
     		<f:facet name="header">#{msgs.view_header_number}</f:facet>
@@ -29,6 +28,7 @@
     		#{record.phoneNumber}
     	</h:column>
     </h:dataTable>
+    <h:form><p><h:messages style="color:red" /></p></h:form>
     <h:panelGroup layout="block" id="navPages"> 
     	<h:form>
     		<ui:repeat var="i" value="#{viewPage.valuesPages}">

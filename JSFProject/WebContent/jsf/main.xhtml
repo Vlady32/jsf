@@ -21,8 +21,8 @@
       	<h:panelGroup layout="block" id="content">
       		<h:panelGroup layout="block" id="nav">
       			<h:form id="itemsMenu">
-      				<ui:repeat var="item" value="#{main.listItemsMenu}">
-      					<p><h:commandLink value="#{item}" action="#{main.determineAction}">
+      				<ui:repeat var="item" value="#{main.listItemsMenu}" varStatus="point">
+      					<p><h:commandLink value="#{item}" actionListener="#{main.clearBean(point.index)}" action="#{main.determineAction}">
       						<f:param name="link" value="#{item}"/>
       						<f:ajax render=":workplace"/>
       					</h:commandLink></p>
@@ -31,19 +31,19 @@
       		</h:panelGroup>
       		<h:panelGroup id="workplace" layout="block">
   				<h:panelGroup id="viewIn" rendered="#{main.linkPage eq 'view.xhtml'}" layout="block">
-    					<ui:include src="view.xhtml"/> 
+    				<ui:include src="view.xhtml"/> 
 				</h:panelGroup>
 				<h:panelGroup id="addIn" rendered="#{main.linkPage eq 'add.xhtml'}" layout="block">
-    					<ui:include src="add.xhtml"/> 
+    				<ui:include src="add.xhtml"/> 
 				</h:panelGroup>
 				<h:panelGroup id="controlIn" rendered="#{main.linkPage eq 'control.xhtml'}" layout="block">
-    					<ui:include src="control.xhtml"/> 
+    				<ui:include src="control.xhtml"/> 
 				</h:panelGroup>
 				<h:panelGroup id="editIn" rendered="#{main.linkPage eq 'edit.xhtml'}" layout="block">
 		  			<ui:include src="edit.xhtml"/> 
 				</h:panelGroup>
 				<h:panelGroup id="searchIn" rendered="#{main.linkPage eq 'search.xhtml'}" layout="block">
-    					<ui:include src="search.xhtml"/> 
+    				<ui:include src="search.xhtml"/> 
 				</h:panelGroup>
 			</h:panelGroup>
       		<h:panelGroup layout="block" id="hfooter"></h:panelGroup>

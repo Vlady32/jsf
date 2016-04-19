@@ -25,8 +25,12 @@ public class EditBean implements Serializable, IDB2 {
 
     private static final long   serialVersionUID = 1L;
     private static final Logger LOGGER           = LoggerFactory.getLogger(EditBean.class);
-    private final ViewBean      viewBean;
+    private ViewBean            viewBean;
     private Record              changedRecord;
+
+    public void clear() {
+        viewBean = new ViewBean();
+    }
 
     public Record getChangedRecord() {
         return changedRecord;

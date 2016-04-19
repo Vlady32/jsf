@@ -25,6 +25,9 @@ public class Constants {
     public static final int    DEFAULT_PAGE                              = 1;
     public static final int    NUMBER_ONE                                = 1;
     public static final int    DEFAULT_INDEX_ITEM                        = -1;
+    public static final int    DEFAULT_VIEW_PAGE_INDEX                   = 0;
+    public static final int    DEFAULT_EDIT_PAGE_INDEX                   = 2;
+    public static final int    DEFAULT_SEARCH_PAGE_INDEX                 = 3;
     public static final int    ONE_KB                                    = 1024;
     public static final double DEFAULT_QUALITY_RECORDS_AND_USERS_ON_PAGE = 30.0;
 
@@ -41,6 +44,7 @@ public class Constants {
     public static final String DEFAULT_DEFAULT_SEPARATOR                 = "/";
     public static final String PATH_VALUE_PHOTOS                         = "C:\\photos";
     public static final String DEFAULT_ENCODING                          = "UTF-8";
+    public static final String PARAMETER_ALL                             = "all";
 
     public static final String PROPERTY_PATH_LOGIN_PAGE                  = "path.page.login";
     public static final String PROPERTY_PATH_MAIN_PAGE                   = "path.page.main";
@@ -53,6 +57,8 @@ public class Constants {
     public static final String PROPERTY_DELETE_RECORD                    = "deleteRecord";
     public static final String PROPERTY_GET_USERS                        = "getUsers";
     public static final String PROPERTY_DELETE_USER                      = "deleteUser";
+    public static final String PROPERTY_SEARCH_ALL_COLUMNS               = "searchAllColumns";
+    public static final String PROPERTY_SEARCH_CERTAIN_COLUMN            = "searchCertainColumn";
 
     public static final String NAMING_EXCEPTION                          = "NamingException";
     public static final String EXCEPTION_SQL                             = "SQLException";

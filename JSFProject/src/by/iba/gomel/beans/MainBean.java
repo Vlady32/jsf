@@ -7,6 +7,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -20,6 +21,41 @@ public class MainBean implements Serializable {
     private static final long serialVersionUID = 1L;
     private List<String>      listItemsMenu;
     private String            linkPage;
+
+    @ManagedProperty(value = "#{viewPage}")
+    ViewBean                  viewBean;
+    @ManagedProperty(value = "#{editPage}")
+    EditBean                  editBean;
+    @ManagedProperty(value = "#{searchPage}")
+    SearchBean                searchBean;
+
+    public void setEditBean(final EditBean editBean) {
+        this.editBean = editBean;
+    }
+
+    public void setSearchBean(final SearchBean searchBean) {
+        this.searchBean = searchBean;
+    }
+
+    public void setViewBean(final ViewBean viewBean) {
+        this.viewBean = viewBean;
+    }
+
+    public void clearBean(final int index) {
+        switch (index) {
+            case Constants.DEFAULT_VIEW_PAGE_INDEX:
+                viewBean.clear();
+                break;
+            case Constants.DEFAULT_EDIT_PAGE_INDEX:
+                editBean.clear();
+                break;
+            case Constants.DEFAULT_SEARCH_PAGE_INDEX:
+                searchBean.clear();
+                break;
+            default:
+                break;
+        }
+    }
 
     public String logOut() {
         SessionBean.getSession().invalidate();
