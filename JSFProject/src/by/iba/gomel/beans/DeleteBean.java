@@ -39,7 +39,6 @@ public class DeleteBean implements Serializable, IDB2 {
 
     public void deleteRecord(final Integer deletedItem) {
         this.deletedItem = deletedItem;
-        System.err.println(deletedItem);
         perform();
     }
 
