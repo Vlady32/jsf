@@ -137,6 +137,9 @@ public class SearchBean implements Serializable, IDB2 {
                 }
             }
         }
+        if (!(searchedRecords.size() > 0)) {
+            SessionBean.addErrorMessage(Constants.MESSAGE_SEARCH_NOTHING, null);
+        }
         return Constants.RESULT_SUCCESS;
     }
 }

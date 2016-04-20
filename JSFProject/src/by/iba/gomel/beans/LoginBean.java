@@ -6,12 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.MessageFormat;
-import java.util.Locale;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +16,6 @@ import org.slf4j.LoggerFactory;
 import by.iba.gomel.Constants;
 import by.iba.gomel.connectiondb.ConnectionDB2;
 import by.iba.gomel.interfaces.IDB2;
-import by.iba.gomel.managers.MessageManager;
 import by.iba.gomel.managers.RequestManager;
 
 @ManagedBean(name = "login")
@@ -73,12 +69,8 @@ public class LoginBean implements Serializable, IDB2 {
                 SessionBean.setAttributesSession(Constants.ATTRIBUTE_NAME_TYPE, typeUser);
                 return Constants.RESULT_SUCCESS;
             } else {
-                final FacesContext context = FacesContext.getCurrentInstance();
-                final Locale currentLocale = context.getExternalContext().getRequestLocale();
-                final MessageManager messageManager = new MessageManager(currentLocale);
-                final String messageError = messageManager
-                        .getProperty(Constants.MESSAGE_LOGIN_ERROR);
-                context.addMessage(null, new FacesMessage(messageError));
+                SessionBean.addErrorMessage(Constants.MESSAGE_LOGIN_ERROR,
+                        Constants.TAG_ERROR_MESSAGE_PASSWORD);
                 return null;
             }
         } catch (final SQLException e) {

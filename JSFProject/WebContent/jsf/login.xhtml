@@ -3,19 +3,24 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"      
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
       <h:head>
       	<title>#{msgs.login_title}</title>
+      	<h:outputStylesheet library="css" name="loginStyle.css"/>
       </h:head>
       <h:body>
-      	<h:form>
-      		<p>#{msgs.login_header}</p>
-      		<p>#{msgs.login_input_login}:<h:inputText required="true" value="#{login.userName}"/></p>
-      		<p>#{msgs.login_input_password}:<h:inputSecret required="true" value="#{login.password}"/></p>
-      		<p><h:commandButton id="loginButton" value="#{msgs.login_button_signIn}" action="#{login.validateUser}"/></p>
-      		<p><h:messages style="color:red" /></p>
+      	<h:form id="loginForm" styleClass="boxLoginForm">
+      		<p class="in">#{msgs.login_header}</p>
+      		<p><h:inputText id="userNameLogin" requiredMessage=" #{msgs.message_empty_field}" required="true" value="#{login.userName}"/>
+      		<br/><h:message for="userNameLogin" style="color:red" /> </p>
+      		<p:watermark  for="userNameLogin" value="#{msgs.login_input_login}"/>
+      		<p><h:inputSecret id="passwordLogin" required="true" requiredMessage=" #{msgs.message_empty_field}" value="#{login.password}"/>
+      		<br/><h:message for="passwordLogin" style="color:red" /> </p>
+      		<p:watermark  for="passwordLogin" value="#{msgs.login_input_password}"/>
+      		<p><h:commandButton id="sendButtonLogin" value="#{msgs.login_button_signIn}" action="#{login.validateUser}"/></p>
+      		<h:link styleClass="registr" value="#{msgs.login_registration}" outcome="registration.jsf" />
       	</h:form>
-      	<h:link value="#{msgs.login_registration}" outcome="registration.jsf" />
       </h:body>
 </html>
 

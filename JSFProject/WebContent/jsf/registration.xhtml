@@ -3,18 +3,25 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"      
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
       <h:head>
       	<title>#{msgs.reg_title}</title>
+      	<h:outputStylesheet library="css" name="regStyle.css"/>
       </h:head>
       <h:body>
-      	<h:form>
-      		<p>#{msgs.reg_header}</p>
-      		<p>#{msgs.reg_login}:<h:inputText required="true" value="#{reg.login}"/></p>
-      		<p>#{msgs.reg_password}:<h:inputSecret required="true" value="#{reg.password}"/></p>
-      		<p>#{msgs.reg_conf_pass}:<h:inputSecret required="true" value="#{reg.confirmedPassword}"/></p>
-      		<p><h:commandButton value="#{msgs.reg_button_create}" action="#{reg.registeredUser}"/></p>
-      		<p><h:messages style="color:red" /></p>
+      	<h:form id="registrationForm" styleClass="regBox">
+      		<p class="headerReg">#{msgs.reg_header}</p>
+      		<p><h:inputText id="login" required="true" value="#{reg.login}" requiredMessage=" #{msgs.message_empty_field}" />
+      		<br/><h:message for="login" style="color:red"/></p>
+      		<p:watermark  for="login" value="#{msgs.reg_login}"/>
+      		<p><h:inputSecret id="password" required="true" value="#{reg.password}" requiredMessage=" #{msgs.message_empty_field}"/>
+      		<br/><h:message for="password" style="color:red"/></p>
+      		<p:watermark for="password" value="#{msgs.reg_password}"/>
+      		<p><h:inputSecret id="confirmPassword" required="true" value="#{reg.confirmedPassword}" requiredMessage=" #{msgs.message_empty_field}"/>
+      		<br/><h:message for="confirmPassword" style="color:red"/></p>
+      		<p:watermark for="confirmPassword" value="#{msgs.reg_conf_pass}"/>
+      		<p><h:commandButton id="sendButtonReg" value="#{msgs.reg_button_create}" action="#{reg.registeredUser}"/></p>
       	</h:form>
       </h:body>
 </html>

@@ -60,15 +60,35 @@
         <p id="imageProfile"><h:graphicImage url="data:image/jpg;base64,${editPage.changedRecord.getBase64Code()}" alt="${editPage.changedRecord.fullName}" style="width: 150px; height: 200px;"/></p>
   		<h:form>
   			<p><h:outputText styleClass="bold" value="#{msgs.profile_full_name}"/>
-    		<h:inputText value="#{editPage.changedRecord.fullName}"/></p>
+    		<h:inputText required="true" id="usernameEdit" requiredMessage=" #{msgs.message_empty_field}" value="#{editPage.changedRecord.fullName}"  validatorMessage=" #{msgs.message_wrong_username}" >
+      			<f:validateLength minimum="3"/>
+      			<f:validateRegex pattern="^[ a-zA-Zа-яА-ЯёЁ]+$"/>
+      		</h:inputText>
+      		<h:message for="usernameEdit" style="color:red"/></p>
   			<p><h:outputText styleClass="bold" value="#{msgs.profile_address}"/>
-    		<h:inputText value="#{editPage.changedRecord.address}"/></p>
+    		<h:inputText id="addressEdit" required="true" requiredMessage=" #{msgs.message_empty_field}" value="#{editPage.changedRecord.address}" validatorMessage=" #{msgs.message_wrong_address}">
+      			<f:validateLength minimum="2"/>
+      			<f:validateRegex pattern="^[ \wа-яА-ЯёЁ\.\,\-]*$"/>
+      		</h:inputText>
+      		<h:message for="addressEdit" style="color:red"/>
+    		</p>
   			<p><h:outputText styleClass="bold" value="#{msgs.profile_telephone}"/>
-    		<h:inputText value="#{editPage.changedRecord.phoneNumber}"/></p>
+    		<h:inputText id="phoneEdit" required="true" requiredMessage=" #{msgs.message_empty_field}" value="#{editPage.changedRecord.phoneNumber}" validatorMessage=" #{msgs.message_wrong_telephone}">
+      			<f:validateLength minimum="2"/>
+      			<f:validateRegex pattern="^\+?\d+$"/>
+      		</h:inputText>
+      		<h:message for="phoneEdit" style="color:red"/>
+    		</p>
   			<p><h:outputText styleClass="bold" value="#{msgs.profile_mail}"/>
-    		<h:inputText value="#{editPage.changedRecord.mail}"/></p>
+    		<h:inputText id="mailEdit" value="#{editPage.changedRecord.mail}" validatorMessage=" #{msgs.message_wrong_mail}">
+      			<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+      		</h:inputText>
+      		<h:message for="mailEdit" style="color:red"/>
+    		</p>
   			<p><h:outputText styleClass="bold" value="#{msgs.profile_birthdate}"/>
   			<rich:calendar required="true" cellWidth="24px" cellHeight="22px" popupStyle="width:200px" locale="#{sessionInformation.currentLocale}" datePattern="yyyy-MM-dd" value="#{editPage.changedRecord.birthDate}"/></p>
+  			<p><h:outputText styleClass="bold" value="#{msgs.profile_photo}"/>
+  			<rich:fileUpload immediateUpload="true" id="fileUploadId"  fileUploadListener="#{editPage.listener}" listHeight="100%" acceptedTypes="jpg, gif, png, bmp" maxFileSize="2000000"/></p>
   			<p><h:commandButton value="#{msgs.edit_button}" action="#{editPage.changeRecord}"/> </p>
   		</h:form>     
 	</rich:popupPanel>

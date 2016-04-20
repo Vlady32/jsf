@@ -7,6 +7,7 @@
       <h:head>
       	<title>#{msgs.main_title}</title>
       	<h:outputStylesheet library="css" name="mainStyle.css"/>
+      	<h:outputScript library="js" name="jquery-2.2.2.min.js" target="head"/>
       </h:head>
       <h:body>
       	<h:panelGroup layout="block" id="header">
@@ -22,7 +23,7 @@
       		<h:panelGroup layout="block" id="nav">
       			<h:form id="itemsMenu">
       				<ui:repeat var="item" value="#{main.listItemsMenu}" varStatus="point">
-      					<p><h:commandLink value="#{item}" actionListener="#{main.clearBean(point.index)}" action="#{main.determineAction}">
+      					<p><h:commandLink value="#{item}" onclick="$('#nav a').removeClass('active'); $(this).addClass('active');" actionListener="#{main.clearBean(point.index)}" action="#{main.determineAction}">
       						<f:param name="link" value="#{item}"/>
       						<f:ajax render=":workplace"/>
       					</h:commandLink></p>

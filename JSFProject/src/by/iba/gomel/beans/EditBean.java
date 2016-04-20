@@ -1,15 +1,24 @@
 package by.iba.gomel.beans;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.MessageFormat;
+import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import org.richfaces.event.FileUploadEvent;
+import org.richfaces.model.UploadedFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,6 +36,37 @@ public class EditBean implements Serializable, IDB2 {
     private static final Logger LOGGER           = LoggerFactory.getLogger(EditBean.class);
     private ViewBean            viewBean;
     private Record              changedRecord;
+
+    public void listener(final FileUploadEvent event) {
+        final UploadedFile uploadedFile = event.getUploadedFile();
+        final String path = Constants.PATH_VALUE_PHOTOS + File.separator + new Date().getTime()
+                + uploadedFile.getName();
+        final File file = new File(path);
+        InputStream in = null;
+        OutputStream out = null;
+        try {
+            in = uploadedFile.getInputStream();
+            out = new FileOutputStream(file);
+            int read = 0;
+            final byte[] bytes = new byte[Constants.ONE_KB];
+            while ((read = in.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            changedRecord.setPathFile(path);
+        } catch (final FileNotFoundException e) {
+            EditBean.LOGGER.error(Constants.FILE_NOT_FOUND_EXCEPTION, e);
+        } catch (final IOException e) {
+            EditBean.LOGGER.error(Constants.IO_EXCEPTION, e);
+        } finally {
+            try {
+                in.close();
+                out.flush();
+                out.close();
+            } catch (final IOException e) {
+                EditBean.LOGGER.error(Constants.IO_EXCEPTION, e);
+            }
+        }
+    }
 
     public void clear() {
         viewBean = new ViewBean();

@@ -16,6 +16,29 @@ p,a{
 	font-family: "Tahoma";
 }
 
+a{
+	color: blue;
+}
+
+.active{
+	background-color: white;
+	padding: 10px;
+	border-radius: 3px;
+}
+
+#nav a{
+	text-decoration: none;
+	color: blue;
+	margin-left: 20px;
+}
+
+#nav a:hover{
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 3px;
+	background-color: white;
+}
+
 #header{
 	width: 100%;
 	height:8%;
@@ -131,18 +154,49 @@ th{
 	text-decoration: none;
 }
 
-#popupWindow_container div{
+#popupWindow_container div, #popupWindowEdit_container div{
 	font-family: "Tahoma";
 	font-size: 15px;
 }
 
-#popupWindow_content #imageProfile{
+#popupWindow_content #imageProfile, #popupWindowEdit_content #imageProfile{
 	float: left;
 	margin-right: 20px;
 }
 
-#popupWindow_content form{
+#popupWindow_content form, #popupWindowEdit_content form{
 	float: left;
+}
+
+#popupWindowEdit_content input{
+    width: 300px;
+    height: 30px;
+    padding-left: 10px;
+    margin-bottom: 0px; 
+    font-size: 16px; 
+    border-top: 1px solid #e1e8ec;
+    border-right: 1px solid #eef2f5;
+    border-bottom: 1px solid #eef2f5;
+    border-left: 1px solid #e1e8ec;
+    border-radius: 4px;
+}
+
+#popupWindowEdit_content input[type="submit"]{
+	margin-left: 5px;
+    cursor: pointer;
+    color: #185e87;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    padding-left: 21px;
+    font-size: 18px;
+    padding-right: 21px;
+    text-shadow: 1px 1px 0 #c3e9f8;
+    background-color: #94dffc;
+}
+
+#popupWindowEdit_content input[type="submit"]:hover{
+    background-color: #5ecef9;
 }
 
 .bold{
@@ -169,6 +223,8 @@ th{
 .hidden{
 	visibility: hidden;
 }
+
+
 
 
 

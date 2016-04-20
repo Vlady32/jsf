@@ -5,8 +5,9 @@
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:a4j="http://richfaces.org/a4j"
     xmlns:rich="http://richfaces.org/rich">
+    <h:outputStylesheet library="css" name="searchStyle.css"/>
     <h:form id="searchForm">
-    	#{msgs.search_keyword}:<h:inputText required="true" value="#{searchPage.searchPhrase}"/>
+    	<h:inputText id="searchPhrase" required="true" value="#{searchPage.searchPhrase}"/>
     	<h:selectOneMenu value="#{searchPage.category}">
     		<f:selectItem itemValue="fullName" itemLabel="#{msgs.view_header_full_name}" />
     		<f:selectItem itemValue="address" itemLabel="#{msgs.view_header_address}" />

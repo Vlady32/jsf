@@ -45,6 +45,8 @@ public class Constants {
     public static final String PATH_VALUE_PHOTOS                         = "C:\\photos";
     public static final String DEFAULT_ENCODING                          = "UTF-8";
     public static final String PARAMETER_ALL                             = "all";
+    public static final String TAG_ERROR_MESSAGE_REGISTR                 = "registrationForm:confirmPassword";
+    public static final String TAG_ERROR_MESSAGE_PASSWORD                = "loginForm:passwordLogin";
 
     public static final String PROPERTY_PATH_LOGIN_PAGE                  = "path.page.login";
     public static final String PROPERTY_PATH_MAIN_PAGE                   = "path.page.main";
@@ -81,6 +83,7 @@ public class Constants {
     public static final String MESSAGE_MENU_EDITING                      = "main_menu_editing";
     public static final String MESSAGE_MENU_SEARCHING                    = "main_menu_searching";
     public static final String MESSAGE_MENU_CONTROL                      = "main_menu_control_users";
+    public static final String MESSAGE_SEARCH_NOTHING                    = "search_message_nothing";
 
     public static final String TYPE_USER                                 = "user";
     public static final String TYPE_GUEST                                = "guest";

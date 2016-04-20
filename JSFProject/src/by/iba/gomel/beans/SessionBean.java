@@ -57,12 +57,12 @@ public class SessionBean implements Serializable {
         }
     }
 
-    public static void addErrorMessage(final String propertyMessage) {
+    public static void addErrorMessage(final String propertyMessage, final String tag) {
         final FacesContext context = FacesContext.getCurrentInstance();
         final Locale currentLocale = new SessionBean().getCurrentLocale();
         final MessageManager messageManager = new MessageManager(currentLocale);
         final String messageError = messageManager.getProperty(propertyMessage);
-        context.addMessage(null, new FacesMessage(messageError));
+        context.addMessage(tag, new FacesMessage(messageError));
     }
 
 }

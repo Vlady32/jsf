@@ -56,7 +56,8 @@ public class RegBean implements Serializable, IDB2 {
         if (password.equals(confirmedPassword)) {
             return perform();
         } else {
-            SessionBean.addErrorMessage(Constants.MESSAGE_REGISTRATION_PASSWORDS_ERROR);
+            SessionBean.addErrorMessage(Constants.MESSAGE_REGISTRATION_PASSWORDS_ERROR,
+                    Constants.TAG_ERROR_MESSAGE_REGISTR);
             return null;
         }
     }
@@ -80,7 +81,8 @@ public class RegBean implements Serializable, IDB2 {
             pr.executeUpdate();
         } catch (final SQLException e) {
             RegBean.LOGGER.error(Constants.EXCEPTION_SQL, e);
-            SessionBean.addErrorMessage(Constants.MESSAGE_REGISTRATION_LOGIN_ERROR);
+            SessionBean.addErrorMessage(Constants.MESSAGE_REGISTRATION_LOGIN_ERROR,
+                    Constants.TAG_ERROR_MESSAGE_REGISTR);
             return null;
         } finally {
             if (cn != null) {

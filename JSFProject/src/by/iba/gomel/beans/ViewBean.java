@@ -68,7 +68,7 @@ public class ViewBean implements Serializable, IDB2 {
         if ((resultOperation != null) && resultOperation.equals(Constants.RESULT_SUCCESS)) {
             return listRecords;
         } else {
-            SessionBean.addErrorMessage(Constants.MESSAGE_WRONG_VIEW);
+            SessionBean.addErrorMessage(Constants.MESSAGE_WRONG_VIEW, null);
             return null;
         }
     }

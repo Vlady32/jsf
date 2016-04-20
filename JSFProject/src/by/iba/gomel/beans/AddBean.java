@@ -49,7 +49,7 @@ public class AddBean implements Serializable, IDB2 {
     }
 
     public void listener(final FileUploadEvent event) {
-        System.err.println("listener");
+        record = new Record();
         final UploadedFile uploadedFile = event.getUploadedFile();
         final String path = Constants.PATH_VALUE_PHOTOS + File.separator + new Date().getTime()
                 + uploadedFile.getName();
@@ -87,6 +87,7 @@ public class AddBean implements Serializable, IDB2 {
 
     @Override
     public String perform() {
+        System.err.println(record);
         Statement st = null;
         PreparedStatement pr = null;
         Connection cn = null;
