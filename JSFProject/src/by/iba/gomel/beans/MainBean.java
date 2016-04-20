@@ -16,6 +16,9 @@ import by.iba.gomel.managers.MessageManager;
 
 @ManagedBean(name = "main")
 @ViewScoped
+/**
+ * This bean uses for working with main page.
+ */
 public class MainBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,6 +44,11 @@ public class MainBean implements Serializable {
         this.viewBean = viewBean;
     }
 
+    /**
+     * 
+     * @param index
+     *            index page.
+     */
     public void clearBean(final int index) {
         switch (index) {
             case Constants.DEFAULT_VIEW_PAGE_INDEX:

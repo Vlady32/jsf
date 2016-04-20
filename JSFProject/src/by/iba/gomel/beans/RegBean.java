@@ -20,6 +20,9 @@ import by.iba.gomel.managers.RequestManager;
 
 @ManagedBean(name = "reg")
 @RequestScoped
+/**
+ * This bean uses for registering users in database.
+ */
 public class RegBean implements Serializable, IDB2 {
 
     private static final long   serialVersionUID = 1L;

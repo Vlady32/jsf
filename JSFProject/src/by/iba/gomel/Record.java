@@ -117,6 +117,12 @@ public class Record implements Serializable {
         this.birthDate = birthDate;
     }
 
+    /**
+     * 
+     * @param pathToFile
+     *            path to image file.
+     * @return array of byte.
+     */
     private byte[] getByteFile(final String pathToFile) {
         FileInputStream fileInputStream = null;
         final File file = new File(pathToFile);
@@ -144,13 +150,6 @@ public class Record implements Serializable {
 
     public void setPathFile(final String pathFile) {
         this.pathFile = pathFile;
-    }
-
-    @Override
-    public String toString() {
-        return "Record [item=" + item + ", fullName=" + fullName + ", address=" + address
-                + ", phoneNumber=" + phoneNumber + ", creationDate=" + creationDate + ", mail="
-                + mail + ", birthDate=" + birthDate + ", pathFile=" + pathFile + "]";
     }
 
 }

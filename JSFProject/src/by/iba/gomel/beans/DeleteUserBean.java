@@ -20,6 +20,9 @@ import by.iba.gomel.managers.RequestManager;
 
 @ManagedBean(name = "deleteUserPage")
 @ViewScoped
+/**
+ * This bean uses for deleting user from database.
+ */
 public class DeleteUserBean implements Serializable, IDB2 {
 
     private static final long   serialVersionUID = 1L;

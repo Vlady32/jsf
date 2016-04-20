@@ -23,6 +23,9 @@ import by.iba.gomel.managers.RequestManager;
 
 @ManagedBean(name = "searchPage")
 @ViewScoped
+/**
+ * This bean uses for searching records in database.
+ */
 public class SearchBean implements Serializable, IDB2 {
 
     private static final long   serialVersionUID = 1L;

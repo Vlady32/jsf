@@ -23,6 +23,9 @@ import by.iba.gomel.managers.RequestManager;
 
 @ManagedBean(name = "controlPage")
 @ViewScoped
+/**
+ * This bean uses for working with users.
+ */
 public class ControlBean implements Serializable, IDB2 {
 
     private static final long   serialVersionUID = 1L;

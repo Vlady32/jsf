@@ -15,6 +15,9 @@ import by.iba.gomel.managers.MessageManager;
 
 @ManagedBean(name = "sessionInformation")
 @RequestScoped
+/**
+ * This bean uses for working with session.
+ */
 public class SessionBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,6 +47,13 @@ public class SessionBean implements Serializable {
                 .getRequest();
     }
 
+    /**
+     * 
+     * @param name
+     *            name attribute.
+     * @param value
+     *            value attribute.
+     */
     public static void setAttributesSession(final String name, final Object value) {
         SessionBean.getSession().setAttribute(name, value);
     }
@@ -57,6 +67,13 @@ public class SessionBean implements Serializable {
         }
     }
 
+    /**
+     * 
+     * @param propertyMessage
+     *            property name for getting value from property file.
+     * @param tag
+     *            html tag for setting message.
+     */
     public static void addErrorMessage(final String propertyMessage, final String tag) {
         final FacesContext context = FacesContext.getCurrentInstance();
         final Locale currentLocale = new SessionBean().getCurrentLocale();

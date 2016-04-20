@@ -30,6 +30,9 @@ import by.iba.gomel.managers.RequestManager;
 
 @ManagedBean(name = "addPage")
 @ViewScoped
+/**
+ * This bean uses for adding record in database.
+ */
 public class AddBean implements Serializable, IDB2 {
 
     private static final Logger LOGGER           = LoggerFactory.getLogger(AddBean.class);
@@ -48,6 +51,11 @@ public class AddBean implements Serializable, IDB2 {
         this.record = record;
     }
 
+    /**
+     * 
+     * @param event
+     *            file upload event.
+     */
     public void listener(final FileUploadEvent event) {
         record = new Record();
         final UploadedFile uploadedFile = event.getUploadedFile();
@@ -87,7 +95,6 @@ public class AddBean implements Serializable, IDB2 {
 
     @Override
     public String perform() {
-        System.err.println(record);
         Statement st = null;
         PreparedStatement pr = null;
         Connection cn = null;

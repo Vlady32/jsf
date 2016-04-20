@@ -9,6 +9,9 @@ import by.iba.gomel.Record;
 
 @ManagedBean(name = "profilePage")
 @SessionScoped
+/**
+ * This bean uses for getting record.
+ */
 public class ProfileBean implements Serializable {
 
     private static final long serialVersionUID = 1L;

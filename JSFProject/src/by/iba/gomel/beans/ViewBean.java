@@ -25,6 +25,9 @@ import by.iba.gomel.managers.RequestManager;
 
 @ManagedBean(name = "viewPage")
 @ViewScoped
+/**
+ * This bean uses for viewing.
+ */
 public class ViewBean implements Serializable, IDB2 {
 
     private static final long   serialVersionUID = 1L;

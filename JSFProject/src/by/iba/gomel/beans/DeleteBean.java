@@ -20,6 +20,9 @@ import by.iba.gomel.managers.RequestManager;
 
 @ManagedBean(name = "deletePage")
 @RequestScoped
+/**
+ * This bean uses for deleting record from database.
+ */
 public class DeleteBean implements Serializable, IDB2 {
 
     private static final long   serialVersionUID = 1L;

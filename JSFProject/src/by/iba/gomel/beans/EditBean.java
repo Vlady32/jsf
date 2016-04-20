@@ -30,6 +30,9 @@ import by.iba.gomel.managers.RequestManager;
 
 @ManagedBean(name = "editPage")
 @ViewScoped
+/**
+ * This bean uses for editing record in database.
+ */
 public class EditBean implements Serializable, IDB2 {
 
     private static final long   serialVersionUID = 1L;
@@ -37,6 +40,11 @@ public class EditBean implements Serializable, IDB2 {
     private ViewBean            viewBean;
     private Record              changedRecord;
 
+    /**
+     * 
+     * @param event
+     *            file upload event.
+     */
     public void listener(final FileUploadEvent event) {
         final UploadedFile uploadedFile = event.getUploadedFile();
         final String path = Constants.PATH_VALUE_PHOTOS + File.separator + new Date().getTime()
